@@ -1,8 +1,8 @@
 --[[
 
-    Simple and practical keybind and shortcut manager !!
+    Very basic utility to convert shortcuts from human-legible into Neovim understandable keybinds.
 
-                    October 11th, 2025
+                                        October 11th, 2025                                        
 
 ]]
 
@@ -64,7 +64,7 @@ end
 
 function KeybindManager.map(mode, key, action, opts)
     opts = opts or {
-        noremap = true,
+        noremap = false,
         silent = true
     }
 
