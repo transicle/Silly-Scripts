@@ -1,4 +1,5 @@
 local pacman = require("toolkits.pacman")
+local KeybindManager = require("toolkits.binder")
 
 pacman.use("https://github.com/goolord/alpha-nvim", function()
     local dashboard = require("alpha.themes.dashboard")
@@ -18,8 +19,7 @@ pacman.use("https://github.com/goolord/alpha-nvim", function()
     dashboard.section.buttons.val = {
         dashboard.button("N", "  Make New", ":ene <CR>"),         -- Shift   N
         dashboard.button("Alt + F", "  Find File", nil),          -- Alt     F
-        dashboard.button("Alt + T", "󰙅  File Tree Preview", nil),  -- Alt     G
-        dashboard.button("Control + P", "  View Plugins", nil),   -- Control P
+        -- dashboard.button("Alt + T", "󰙅  File Tree Preview", nil),  -- Alt     G
         dashboard.button("Q", "  Quit", ":qa<CR>"),               -- Shift   Q
     }
 
@@ -51,4 +51,4 @@ pacman.use("https://github.com/goolord/alpha-nvim", function()
     }
 
     require("alpha").setup(dashboard.opts)
-end)
+end, "alpha")
