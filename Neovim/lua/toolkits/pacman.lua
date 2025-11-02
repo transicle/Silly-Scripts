@@ -4,7 +4,7 @@
 
     It's not that good of a package manager, so I added tons of failsafes for manual installations..
 
-                                        November 1st, 2025
+                                        November 2nd, 2025
 
 ]]
 
@@ -42,8 +42,8 @@ local function get_plugin_name(repo, override_api_link)
     return first_lua or "init"
 end
 
-local function write_installer(url)
-    local name = url:match(".*/(.-)%.git$") or url:match(".*/(.-)$")
+local function write_installer(url, override_name)
+    local name = override_name or url:match(".*/(.-)%.git$") or url:match(".*/(.-)$")
     local install_path = vim.fn.stdpath("config") .. "/pack/plugins/start/" .. name
 
     if developer_mode and vim.fn.isdirectory(install_path) == 1 then
@@ -54,16 +54,7 @@ local function write_installer(url)
 
     if not already_installed then
         vim.fn.mkdir(vim.fn.stdpath("config") .. "/pack/plugins/start", "p")
-        
-        local clone_ok = vim.fn.system({ "git", "clone", "--depth=1", url, install_path })
-        if vim.v.shell_error ~= 0 then
-            FC = FC + 1
-            vim.notify("Failed to clone plugin: " .. name, vim.log.levels.ERROR)
-
-            return name, false
-        end
-    else
-        SC = SC + 1
+        vim.fn.system({ "git", "clone", "--depth=1", url, install_path })
     end
 
     vim.cmd("packadd " .. name)
