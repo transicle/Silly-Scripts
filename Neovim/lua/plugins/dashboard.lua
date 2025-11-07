@@ -18,6 +18,8 @@ pacman.use("https://github.com/goolord/alpha-nvim", function()
     dashboard.section.buttons.val = {
         dashboard.button("N", "  Make New", ":ene <CR>"),
         dashboard.button("Control + F, Alt + F", "  Find File", nil),
+	dashboard.button("Alt + .", "  Open Git TUI", nil),
+	dashboard.button("Alt + T, Control + Shift + T", "  Explorer", nil),
         dashboard.button("Q", "  Quit", ":qa<CR>"),
     }
 
@@ -27,7 +29,10 @@ pacman.use("https://github.com/goolord/alpha-nvim", function()
     }
 
     local height = vim.fn.winheight(0)
-    if height == 0 then height = 24 end
+    if height == 0 then
+	    height = 24
+    end
+    
     local padding = math.floor((height - (#dashboard.section.header.val + #dashboard.section.buttons.val + #dashboard.section.footer.val + 8)) / 2)
 
     dashboard.config.layout = {
