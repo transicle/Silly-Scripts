@@ -12,7 +12,7 @@
 }
 
 #waybar {
-    background-color: rgba(18, 18, 24, 0);
+    background-color: rgba(25, 25, 35, 0);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -28,10 +28,10 @@
     border-radius: 10px;
     margin: 6px 3px;
     padding: 6px 12px;
-    background-color: #2b2d3a;
-    color: #f5f5e7;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    background-color: #262635;
+    color: #f2e9f7;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 #clock {
@@ -43,7 +43,7 @@
 }
 
 #backlight {
-    background-color: #5f5f6e;
+    background-color: #4b4b5b;
 }
 
 #memory {
@@ -64,17 +64,17 @@
 }
 
 #waybar.hidden {
-    opacity: 0.75;
+    opacity: 0.8;
 }
 
 #workspaces button {
     border-radius: 100%;
     margin: 6px 3px;
     padding: 6px 10px;
-    background-color: #3a3b4f;
+    background-color: #363648;
     color: #fff9d8;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
