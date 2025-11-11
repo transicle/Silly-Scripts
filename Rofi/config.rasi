@@ -13,24 +13,24 @@ configuration {
 @import "shared/fonts.rasi"
 
 * {
-	border-color: var(selected);
-	background-color: var(background);
+	border-color: @selected;
+	background-color: @background;
 
-	foreground-color: var(foreground);
+	foreground-color: @foreground;
 
-	normal-background: var(background);
-	normal-foreground: var(foreground);
+	normal-background: @background;
+	normal-foreground: @foreground;
 
-	urgent-background: var(urgent);
-	urgent-foreground: var(background);
+	urgent-background: @urgent;
+	urgent-foreground: @background;
 
-	active-background: var(active);
-	active-foreground: var(background);
+	active-background: @active;
+	active-foreground: @background;
 
-	selected-normal-background: var(selected);
-	selected-normal-foreground: var(background);
+	selected-normal-background: @selected;
+	selected-normal-foreground: @background;
 
-	handle-color: var(selected);
+	handle-color: @selected;
 }
 
 window {
@@ -42,7 +42,7 @@ window {
 
 	fullscreen: false;
 
-	width: 400px;
+	width: 800px;
 
 	height: 500px;
 
@@ -50,9 +50,9 @@ window {
 
 	padding: 0px;
 
-	border: 2px solid;
+	border: 0px solid;
 	border-radius: 25px;
-	background-color: @background-color;
+	background-color: @background;
 
 	cursor: "default";
 }
@@ -82,9 +82,9 @@ inputbar {
 
 	border: none;
 	border-radius: 20px;
-	background-color: @background-color;
+	background-color: @background;
 
-	text-color: @foreground-color;
+	text-color: @foreground;
 
 	children: [
 		"prompt",
@@ -109,7 +109,7 @@ textbox {
 
 	outline: 0px;
 
-	text-color: @foreground-color;
+	text-color: @foreground;
 }
 
 entry {
@@ -126,11 +126,11 @@ entry {
 	outline: 0px;
 
 	placeholder: "アプリを探す";
-	placeholder-color: #f4c6e2;
+	placeholder-color: @placeholder;
 }
 
 listview {
-	columns: 1;
+	columns: 3;
 	cycle: true;
 
 	lines: 8;
@@ -145,7 +145,7 @@ listview {
 
 	background-color: transparent;
 
-	text-color: @foreground-color;
+	text-color: @foreground;
 
 	border: none;
 }
@@ -157,26 +157,24 @@ element {
 	border-radius: 15px;
 	background-color: transparent;
 
-	text-color: @foreground-color;
+	text-color: @foreground;
 
 	cursor: pointer;
 }
 
 element selected.normal {
-	background-color: #f7c0d8;
-
-	text-color: #ffffff;
+	background-color: @selected-normal;
+	text-color: @foreground;
 }
 
 element alternate.normal {
 	background-color: transparent;
-
-	text-color: @foreground-color;
+	text-color: @foreground;
 }
 
 scrollbar {
 	handle-width: 10px;
-	handle-color: @handle-color;
+	handle-color: @selected;
 
 	border-radius: 0px;
 	background-color: transparent;
