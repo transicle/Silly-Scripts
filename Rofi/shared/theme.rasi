@@ -1,12 +1,18 @@
+/* THEME: LIGHT */
+
 * {
-	background: #fce4ec;
-	background-alt: #fce4ec;
+	background: #f2dce4;
+	background-alt: #f2dce4;
 	
 	foreground: #000000;
 	
-	selected: #f48fb1;
+	selected: #e68fbf;
+	selected-normal: #dc85b3;
 	
 	active: #ce93d9;
 	
 	urgent: #ffb6b9;
+	
+	placeholder: #e6a6c8;
+	handle-color: #e68fbf;
 }
