@@ -15,57 +15,62 @@ local loaded, failed = 0, 0
 local time = 0
 
 local function write_installer(url, name, callback)
-    local path = vim.fn.stdpath("config") .. "/pack/plugins/start/" .. name
+	local path = vim.fn.stdpath("config") .. "/pack/plugins/start/" .. name
 
-    local function finish()
-        vim.cmd("packadd " .. name)
-        vim.opt.rtp:prepend(path)
+	local function finish(start_time)
+        	vim.cmd("packadd " .. name)
+        	vim.opt.rtp:prepend(path)
 
-        if callback then
-            callback()
-        end
-    end
+        	if callback then
+            		callback(true, start_time)
+        	end
+    	end
 
-    if vim.fn.isdirectory(path) == 0 then
-        vim.fn.mkdir(vim.fn.stdpath("config") .. "/pack/plugins/start", "p")
+    	if vim.fn.isdirectory(path) == 0 then
+        	vim.fn.mkdir(vim.fn.stdpath("config") .. "/pack/plugins/start", "p")
 
-        local result = vim.fn.system({ "git", "clone", "--depth=1", url, path })
-        if vim.v.shell_error ~= 0 then
-            vim.notify("Couldn't clone " .. url .. "\n" .. result, vim.log.levels.ERROR)
+        	local start_time = uv.hrtime()
+        	local result = vim.fn.system({ "git", "clone", "--depth=1", url, path })
+        	if vim.v.shell_error ~= 0 then
+	            	vim.notify("Couldn't clone " .. url .. "\n" .. result, vim.log.levels.ERROR)
+        	    	if callback then
+                		callback(false, start_time)
+            		end
+            		return
+        	end
 
-            if callback then
-                callback(false)
-            end
-            return
-        end
-        finish()
-    else
-        finish()
-    end
+        	finish(start_time)
+    	else
+        	local start_time = uv.hrtime()
+
+        	finish(start_time)
+    	end
 end
 
 local function use(url, callback, name)
-    local start = uv.hrtime()
-    write_installer(url, name, function(success)
-        local ok = pcall(require, name)
-        if ok then
-            loaded = loaded + 1
-            if callback then
-                callback()
-            end
-        else
-            failed = failed + 1
-        end
+	local start_time = uv.hrtime()
 
-        time = time + ((uv.hrtime() - start) / 1e6)
-    end)
+    	write_installer(url, name, function(success, start_time)
+        	local ok = pcall(require, name)
+        	if ok then
+            		loaded = loaded + 1
+            		if callback then
+                		callback()
+        	    	end
+		else
+            		failed = failed + 1
+        	end
+
+        	local end_time = uv.hrtime()
+		time = time + ((end_time - start_time) / 1e9)
+    	end)
 end
 
 local function stats()
-    return loaded, failed, time
+    	return loaded, failed, time
 end
 
 return {
-    use = use,
-    stats = stats
+    	use = use,
+    	stats = stats
 }
