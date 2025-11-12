@@ -37,6 +37,7 @@ end
 -- Load files
 
 require("dependencies")
+require("themes.kanagawa")
 
 local path = vim.fn.stdpath("config") .. "/lua"
 
