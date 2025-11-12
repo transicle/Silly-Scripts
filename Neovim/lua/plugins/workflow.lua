@@ -2,8 +2,20 @@ local pacman = require("core.pacman")
 local KeybindManager = require("core.binder")
 
 pacman.use("https://github.com/akinsho/bufferline.nvim", function()
+    local kanagawa = require("kanagawa.colors").setup()
     require("bufferline").setup({
-        options = {
+    	highlights = {
+        	fill = { bg = kanagawa.palette.wave_bg },
+        	background = { fg = kanagawa.palette.fujiWhite, bg = kanagawa.palette.wave_bg },
+        	buffer_visible = { fg = kanagawa.palette.sumiInk1, bg = kanagawa.palette.wave_bg },
+        	buffer_selected = { fg = kanagawa.palette.sumiInk0, bg = kanagawa.palette.waveBlue, bold = true },
+        	separator = { fg = kanagawa.palette.wave_bg, bg = kanagawa.palette.wave_bg },
+        	separator_selected = { fg = kanagawa.palette.waveBlue, bg = kanagawa.palette.wave_bg },
+        	close_button = { fg = kanagawa.palette.crystalBlue, bg = kanagawa.palette.wave_bg },
+        	close_button_visible = { fg = kanagawa.palette.crystalBlue, bg = kanagawa.palette.wave_bg },
+        	close_button_selected = { fg = kanagawa.palette.sumiInk0, bg = kanagawa.palette.waveBlue },
+    	},
+	options = {
             numbers = "none",
             close_command = "bdelete! %d",
             right_mouse_command = "bdelete! %d",
@@ -17,7 +29,7 @@ pacman.use("https://github.com/akinsho/bufferline.nvim", function()
             show_close_icon = true,
             enforce_regular_tabs = false,
             always_show_bufferline = true,
-            separator_style = "thin",
+            separator_style = "slant",
             offsets = {
                 {
                     filetype = "NvimTree",
