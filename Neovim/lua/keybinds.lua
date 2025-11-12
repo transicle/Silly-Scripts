@@ -71,3 +71,26 @@ KeybindManager.map("n", "Control + Shift + N", function()
     vim.wo.number = not vim.wo.number
     vim.wo.relativenumber = false
 end)
+
+local terminal_buffer = nil
+local function toggle_terminal()
+    if terminal_buffer and vim.api.nvim_buf_is_valid(terminal_buffer) then
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+            if vim.api.nvim_win_get_buf(win) == terminal_buffer then
+                vim.api.nvim_win_close(win, true)
+                return
+            end
+        end
+
+        vim.cmd("botright 15split")
+        vim.api.nvim_win_set_buf(0, terminal_buffer)
+        return
+    end
+
+    vim.cmd("botright 15split | terminal")
+    terminal_buffer = vim.api.nvim_get_current_buf()
+end
+
+KeybindManager.map("n", "Control + `", function()
+    toggle_terminal()
+end)
