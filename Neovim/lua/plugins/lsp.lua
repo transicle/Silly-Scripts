@@ -17,8 +17,6 @@ require("mason-lspconfig").setup({
     },
 })
 
-local cmp = require("cmp")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local mason_registry = require("mason-registry")
 
 local on_attach = function(client, bufnr)
