@@ -85,6 +85,7 @@ require("lspsaga").setup({
     }
 })
 
+--[[
 local dap = require("dap")
 dap.adapters.lldb = {
     type = "executable",
@@ -115,3 +116,4 @@ KeybindManager.map("n", "F11",                  function() dap.step_into()      
 KeybindManager.map("n", "F12",                  function() dap.step_out()           end)
 KeybindManager.map("n", "Control + Shift + b",  function() dap.toggle_breakpoint()  end)
 KeybindManager.map("n", "Control + Shift + B",  function() dap.set_breakpoint()     end)
+]]
