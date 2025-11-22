@@ -7,17 +7,17 @@
   "margin-left": 6,
   "margin-right": 6,
   "modules-left": [
-    "hyprland/workspaces",
-    "clock"
+    "hyprland/workspaces"
+    // "clock"
   ],
   "modules-center": [
-    "hyprland/window"
+    // "hyprland/window"
+    "clock"
   ],
   "modules-right": [
-    "network",
-    "battery",
+    // "network",
+    // "battery",
     "pulseaudio",
-    "backlight",
     "custom/temperature",
     "memory",
     "cpu"
@@ -27,23 +27,10 @@
     "all-outputs": true,
     "format": "{icon}",
     "on-click": "activate",
-    "persistent-workspaces": {
-      "*": [
-        1
-      ]
-    },
+    "persistent-workspaces": {},
     "format-icons": {
       "active": "●"
     }
-  },
-  "network": {
-    "format-wifi": "󰤨  {essid}",
-    "format-ethernet": "󰈀  Wired",
-    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
-    "format-linked": "󱘖   {ifname} (No IP)",
-    "format-disconnected": "   Offline",
-    "format-alt": "󰤨   {signalStrength}%",
-    "interval": 1
   },
   "pulseaudio": {
     "format": "{icon}   {volume}%",
@@ -66,7 +53,8 @@
     "tooltip": false
   },
   "memory": {
-    "format": "󰍛  {used:0.1f}G of {total:0.1f}G",
+    // "format": "󰍛  {used:0.1f}G of {total:0.1f}G",
+    "format": "󰍛  {percentage}%",
     "tooltip": false
   },
   "cpu": {
@@ -78,17 +66,5 @@
     "timezone": "Arizona/Phoenix",
     "format": "   {:%H:%M}",
     "tooltip": false
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}{percent}% ",
-    "tooltip": true,
-    "tooltip-format": "当前屏幕亮度: {percent}%",
-    "format-icons": [
-      " 󰃞 ",
-      " 󰃝 ",
-      " 󰃟 ",
-      " 󰃠 "
-    ]
   }
 }

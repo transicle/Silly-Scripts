@@ -1,4 +1,4 @@
-/* THEME: LIGHT */
+/* THEME: DARK */
 
 * {
     font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid";
@@ -12,78 +12,60 @@
 }
 
 #waybar {
-    background-color: rgba(220, 220, 240, 0);
+    background-color: rgba(25, 25, 35, 0);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
 
-#window,
 #clock,
-#battery,
 #pulseaudio,
-#backlight,
 #memory,
-#cpu,
-#network {
+#cpu {
     border-radius: 10px;
     margin: 6px 3px;
     padding: 6px 12px;
-    background-color: #dfe1f2;
-    color: #ffffdb;
-    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+    color: #dfd9c1;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 #clock {
-    background-color: #a8d0fb;
+    background-color: #191919;
 }
 
 #pulseaudio {
-    background-color: #a0e7f5;
-}
-
-#backlight {
-    background-color: #cfcfcf;
+    background-color: #191919;
 }
 
 #memory {
-    background-color: #f9b4c3;
+    background-color: #191919;
 }
 
 #cpu {
-    background-color: #f7c1d2;
+    background-color: #191919;
     margin-right: 6px;
 }
 
 #network {
-    background-color: #fcd3b6;
-}
-
-#window {
-    background-color: #b3e0fc;
+    background-color: #191919;
 }
 
 #waybar.hidden {
-    opacity: 0.75;
+    opacity: 0.8;
 }
 
 #workspaces button {
-    border-radius: 100%;
+    border-radius: 10px;
     margin: 6px 3px;
     padding: 6px 10px;
-    background-color: #dcdff4;
-    color: #ffffdb;
-    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    background-color: #191919;
+    color: #dfd9c1;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #workspaces button.active {
-    color: #ffffdb;
-    background-color: #c1c5f5;
-}
-
-#workspaces button:hover {
-    background-color: #cacaea;
-    color: #fefed4;
+    color: #dfd9c1;
+    background-color: #2b2b2b;
 }

@@ -17,14 +17,10 @@
     transition-duration: 0.5s;
 }
 
-#window,
 #clock,
-#battery,
 #pulseaudio,
-#backlight,
 #memory,
-#cpu,
-#network {
+#cpu {
     border-radius: 10px;
     margin: 6px 3px;
     padding: 6px 12px;
@@ -68,7 +64,7 @@
 }
 
 #workspaces button {
-    border-radius: 100%;
+    border-radius: 10px;
     margin: 6px 3px;
     padding: 6px 10px;
     background-color: #dcdff4;
