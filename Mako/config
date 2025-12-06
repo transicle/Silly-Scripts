@@ -1,11 +1,9 @@
 padding=10
 
-border-radius=12
-border-size=2
-border-color=#ff867f
+border-size=0
+background-color=#00000060
 
-background-color=#FFA49F
+default-timeout=5000
 
-default-timeout=3000
-margin=14
-max-visible=3
+margin=18
+max-visible=4
