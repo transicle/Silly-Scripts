@@ -1,64 +1,71 @@
--- Settings
+let mapleader = ','
 
-vim.opt.termguicolors = true
+"
+"  Buffer management.
+"
+nnoremap <Leader>b :buffers
+nnoremap <Leader>t :botright 15split \| terminal<CR>
+nnoremap <Leader>e :Ex<CR>
 
-if vim.g.neovide then
-    vim.g.neovide_scale_factor = 0.85
-    vim.g.neovide_fullscreen = false
-    vim.g.neovide_remember_window_size = true
-    vim.g.neovide_hide_mouse_when_typing = true
+function! SwitchBuffer(dir)
+	let current = bufnr('%')
+	let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+	if empty(buffers)
+		return
+	endif
 
-    vim.g.neovide_cursor_vfx_mode = "railgun"
-    vim.g.neovide_cursor_vfx_particle_density = 15.0
-    vim.g.neovide_cursor_vfx_particle_lifetime = 1.0
-    vim.g.neovide_cursor_vfx_particle_speed = 25.0
-    vim.g.neovide_cursor_vfx_particle_phase = 1.8
-    vim.g.neovide_cursor_vfx_particle_curl = 3
+	let idx = index(buffers, current)
+	if a:dir ==# 'prev'
+		let newidx = idx - 1
+		if newidx < 0
+			return
+		endif
+	elseif a:dir ==# 'next'
+		let newidx = idx + 1
+		if newidx >= len(buffers)
+			return
+		endif
+	endif
 
-    vim.g.neovide_cursor_animation_length = 0.25
-    vim.g.neovide_cursor_trail_size = 2.0
-    vim.g.neovide_cursor_antialiasing = true
+	execute 'silent write'
+	execute 'buffer ' . buffers[newidx]
+endfunction
 
-    vim.g.neovide_scroll_animation_length = 0.3
-    vim.g.neovide_scroll_animation_far_lines = 0.6
+nnoremap <Leader><Left> :call SwitchBuffer('prev')<CR>
+inoremap <Leader><Left> :call SwitchBuffer('prev')<CR>
 
-    vim.g.neovide_floating_blur_amount_x = 8.0
-    vim.g.neovide_floating_blur_amount_y = 8.0
+nnoremap <Leader><Right> :call SwitchBuffer('next')<CR>
+inoremap <Leader><Right> :call SwitchBuffer('next')<CR>
 
-    vim.g.neovide_padding_top = 25
-    vim.g.neovide_padding_bottom = 25
-    vim.g.neovide_padding_right = 25
-    vim.g.neovide_padding_left = 25
+"
+"  File management. Quicker than using commands.
+"
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
 
-    vim.g.transparency = 0.85
-    vim.g.neovide_refresh_rate = 144
-end
+nnoremap <C-q> :q<CR>
+nnoremap <C-S-q> :qa!<CR>
 
--- Load files
+"
+"  Text selection, similar to visual editors, such as
+"   Visual Studio Code, Sublime, and more.
+"
+nnoremap <C-S-Left> v<Left>
+nnoremap <C-S-Right> v<Right>
+nnoremap <C-S-Up> v<Up>
+nnoremap <C-S-Down> v<Down>
 
-require("dependencies")
-require("themes.kanawaga")
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+vnoremap <C-Down> :m '>+1<CR>gv=gv
 
-local path = vim.fn.stdpath("config") .. "/lua"
+"
+"  Clipboard features. Copy, Cut, Paste.
+"
+vnoremap <C-c> "+y
+nnoremap <C-c> "+y
 
-local function require_files(directory, prefix)
-    prefix = prefix or ""
+vnoremap <C-x> "+d
+nnoremap <C-x> "+d
 
-    for _, file in ipairs(vim.fn.readdir(directory)) do
-        local full_path = directory .. "/" .. file
-        local stat = vim.loop.fs_stat(full_path)
-
-        if stat then
-            if stat.type == "file" and file:match("%.lua$") and (
-                file ~= "pacman.lua"        and
-                file ~= "binder.lua"
-            ) then
-                require(prefix .. file:gsub("%.lua$", ""))
-            elseif stat.type == "directory" then
-                require_files(full_path, prefix .. file .. ".")
-            end
-        end
-    end
-end
-
-require_files(path)
+nnoremap <C-v> "+gP
+inoremap <C-v> <C-r>+
