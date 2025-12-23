@@ -58,6 +58,9 @@ nnoremap <C-S-Down> v<Down>
 vnoremap <C-Up> :m '<-2<CR>gv=gv
 vnoremap <C-Down> :m '>+1<CR>gv=gv
 
+vnoremap <C-S-a> ggVG
+nnoremap <C-S-a> ggVG
+
 "
 "  Clipboard features. Copy, Cut, Paste.
 "
@@ -69,3 +72,9 @@ nnoremap <C-x> "+d
 
 nnoremap <C-v> "+gP
 inoremap <C-v> <C-r>+
+
+vnoremap <C-z> :undo<CR>
+nnoremap <C-z> :undo<CR>
+
+vnoremap <C-y> :redo<CR>
+nnoremap <C-y> :redo<CR>
