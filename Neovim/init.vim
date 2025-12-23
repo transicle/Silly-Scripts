@@ -1,3 +1,11 @@
+"
+"  This configuration file WILL work in vanilla VIM, with the only issues
+"   being `:botright 15split | terminal` being odd, in place of just `:terminal`
+"
+"  No other modifications should be made.
+"  For VIM, use the configuration file in `~/.vimrc`.
+"
+
 let mapleader = ','
 
 "
