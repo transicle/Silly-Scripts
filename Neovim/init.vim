@@ -11,8 +11,8 @@ let mapleader = ','
 "
 "  Buffer management.
 "
-nnoremap <Leader>b :buffers
-nnoremap <Leader>t :botright 15split \| terminal<CR>
+nnoremap <Leader>b :buffers<CR>
+nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>e :Ex<CR>
 
 function! SwitchBuffer(dir)
